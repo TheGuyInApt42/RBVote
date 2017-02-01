@@ -11,6 +11,7 @@ from __future__ import print_function
 
 import Voter
 
+
 def runner():
     pass
 
@@ -54,12 +55,12 @@ def get_welcome_response():
     """
 
     session_attributes = {}
-    card_title = "Horoscope"
-    speech_output = "Welcome to the Alexa daily horoscope skill. " \
-                    "You can ask about daily horoscopes for any sign "
+    card_title = "RBVote"
+    speech_output = "Welcome to the Alexa rock band song request skill. " \
+                    "You can vote for songs to be included in rock band "
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "What is your sign "
+    reprompt_text = "What is song name "
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -75,11 +76,7 @@ def handle_session_end_request():
         card_title, speech_output, None, should_end_session))
 
 
-def create_favorite_color_attributes(favorite_color):
-    return {"favoriteColor": favorite_color}
-
-
-def get_horoscope(intent, session):
+def set_song_and_artist(intent, session):
     card_title = intent['name']
     session_attributes = {}
     should_end_session = False

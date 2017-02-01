@@ -155,7 +155,7 @@ class Voter:
         except Exception:
             thanks_button = site.find_element_by_xpath('/html/body/div/div/div[1]/div/a')
             thanks_button.click()
-            self.connect_db(song_title, artist)
+            #self.connect_db(song_title, artist)
             print '%s by %s logged' % (song_title, artist)
 
     def auto_voter(self):
@@ -193,8 +193,8 @@ class Voter:
 
 
 v = Voter()
-v.auto_voter()
-# v.manual_voter()
+# v.auto_voter()
+v.manual_voter()
 
 
 
