@@ -50,9 +50,12 @@ class Voter:
         self.song_db_url = 'http://rbchronicle.net/'  # URL for Rock Band song database
 
     def load_site(self):
-        browser = webdriver.Chrome()
-        browser.get(self.url)
-        return browser
+        try:
+            browser = webdriver.PhantomJS()
+            browser.get(self.url)
+            return browser
+        except Exception, e:
+            print str(e)
 
     @staticmethod
     def complete_form(site, song, artist):
@@ -184,7 +187,7 @@ class Voter:
                     self.run_voter()
 
             except Exception:
-                self.connect_db(song[1], song[0])
+                # self.connect_db(song[1], song[0])
                 print '%s by %s logged (%s/%s)' % (song[1], song[0], num+1, song_amt)
                 thanks_button = site.find_element_by_xpath('/html/body/div/div/div[1]/div/a')
                 thanks_button.click()
@@ -193,8 +196,8 @@ class Voter:
 
 
 v = Voter()
-# v.auto_voter()
-v.manual_voter()
+v.auto_voter()
+# v.manual_voter()
 
 
 
