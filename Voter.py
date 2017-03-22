@@ -154,7 +154,7 @@ class Voter:
             voted_already = site.find_element_by_xpath('/html/body/div/div/div[1]/div/div[1]/p')
             if voted_already:
                 print 'Too soon to vote for %s' % song_title
-                self.run_voter()
+                # self.run_voter()
         except Exception:
             thanks_button = site.find_element_by_xpath('/html/body/div/div/div[1]/div/a')
             thanks_button.click()
@@ -196,8 +196,8 @@ class Voter:
 
 
 v = Voter()
-v.auto_voter()
-# v.manual_voter()
+# v.auto_voter()
+v.manual_voter()
 
 
 
